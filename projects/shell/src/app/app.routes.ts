@@ -8,24 +8,25 @@ export const APP_ROUTES: Routes = [
       component: HomeComponent,
       pathMatch: 'full'
     },
-
-
     {
       path: 'flights',
       loadChildren: () => import('mfe1/Module')
         .then(m => m.FlightsModule)
-   },
-   {
-    path: 'shop',
-    loadChildren: () => import('mfe1/Module')
-      .then(m => m.ShoppingModule)
- },
-   
+    },
+    {
+      path: 'shop',
+      loadChildren: () => import('mfe1/Module')
+        .then(m => m.ShoppingModule)
+    },
+    {
+      path: 'passenger',
+      loadChildren: () => import('mfe2/Module')
+        .then(m => m.PassengerModule)
+    },
     {
       path: '**',
       component: NotFoundComponent
     }
-
     // DO NOT insert routes after this one.
     // { path:'**', ...} needs to be the LAST one.
 
