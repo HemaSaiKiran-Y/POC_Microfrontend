@@ -1,0 +1,110 @@
+<div id="container">
+  <div><a routerLink="" style="margin-right: 20px">Home</a></div>
+    <h1>Passenger Detail</h1>
+    <form #passengerForm="ngForm" (ngSubmit)="onSubmit(passengerForm)">
+        <!-- Passenger Name -->
+        <div class="form-group">
+          <label for="name">Passenger Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            [(ngModel)]="passenger.name"
+            #name="ngModel"
+            required
+            minlength="3"
+            pattern="^[a-zA-Z ]*$"
+          />
+          <div *ngIf="name.invalid && name.touched" class="error">
+            <div *ngIf="name.errors?.required">Name is required.</div>
+            <div *ngIf="name.errors?.minlength">
+              Name must be at least 3 characters long.
+            </div>
+            <div *ngIf="name.errors?.pattern">
+              Name should not contain special characters.
+            </div>
+          </div>
+        </div>
+      
+        <!-- Age -->
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            class="form-control"
+            [(ngModel)]="passenger.age"
+            #age="ngModel"
+            required
+            max="100"
+          />
+          <div *ngIf="age.invalid && age.touched" class="error">
+            <div *ngIf="age.errors?.required">Age is required.</div>
+            <div *ngIf="age.errors?.max">Age cannot be more than 100.</div>
+          </div>
+        </div>
+      
+        <!-- Contact -->
+        <div class="form-group">
+          <label for="contact">Contact:</label>
+          <input
+            type="text"
+            id="contact"
+            name="contact"
+            class="form-control"
+            [(ngModel)]="passenger.contact"
+            #contact="ngModel"
+            required
+            pattern="^\(\d{3}\) \d{3}-\d{4}$"
+          />
+          <div *ngIf="contact.invalid && contact.touched" class="error">
+            <div *ngIf="contact.errors?.required">Contact is required.</div>
+            <div *ngIf="contact.errors?.pattern">
+              Contact should be a valid US number (e.g., (123) 456-7890).
+            </div>
+          </div>
+        </div>
+      
+        <!-- From -->
+        <div class="form-group">
+          <label for="from">From:</label>
+          <input
+            type="text"
+            id="from"
+            name="from"
+            class="form-control"
+            [(ngModel)]="passenger.from"
+            #from="ngModel"
+            required
+          />
+          <div *ngIf="from.invalid && from.touched" class="error">
+            <div *ngIf="from.errors?.required">This field is required.</div>
+          </div>
+        </div>
+      
+        <!-- To -->
+        <div class="form-group">
+          <label for="to">To:</label>
+          <input
+            type="text"
+            id="to"
+            name="to"
+            class="form-control"
+            [(ngModel)]="passenger.to"
+            #to="ngModel"
+            required
+          />
+          <div *ngIf="to.invalid && to.touched" class="error">
+            <div *ngIf="to.errors?.required">This field is required.</div>
+          </div>
+        </div>
+      
+        <button type="submit" class="btn-submit" [disabled]="!passengerForm.form.valid">
+          Submit
+        </button>
+      </form>
+      
+      
+</div>
